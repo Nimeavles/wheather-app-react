@@ -22,8 +22,7 @@ export const UbicationProvider: React.FC<Props> = ({ children }) => {
   };
 
   const getActualTime = async (coordinates: State) => {
-    const request = await getDataFromApi(`/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${import.meta.env.VITE_API_KEY}&lang=es&units=metric`);
-    console.log(request);
+    const request = await getDataFromApi(`/weather?lat=${coordinates.lat}&lon=${coordinates.lon}`);
     return request.data
   }
 

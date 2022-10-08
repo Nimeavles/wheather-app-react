@@ -6,22 +6,9 @@ import { Navigation } from "./routes/Navigation";
 
 const App = () => {
 
-  const { getUbicationOnPageLoad, getActualTime } = useContext(UbicationContext);
-  const [coordinates, setCoordinates] = useState<CoordinatesFull>()
-
-  useEffect(() => {
-    const coordinates = getUbicationOnPageLoad();
-    setTimeout(async () => {
-      const data = await getActualTime(coordinates);
-      setCoordinates(data);
-    }, 1000)
-  }, [])
-
   return (
     <div className="app min-h-screen">
-      {
-        coordinates ? <Navigation coordinates={ coordinates }/> : <Spinner /> 
-      }
+      <Navigation />
     </div>
   )
 }

@@ -19,8 +19,9 @@ export const Searcher: React.FC<Props> = ({ open, setOpen }) => {
     }
 
     const handleSubmit = () => {
-        console.log(location);
-        navigate(`/location/${location}`)
+        navigate(`/location/${location}`);
+        navigate(0)
+        setOpen(!open)
     }
 
   return (
