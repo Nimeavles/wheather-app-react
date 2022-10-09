@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react"
+import { WeekWheatherType } from "../interfaces/types";
 import { getCurrentUbication, getDataFromApi } from "../utils";
 import { UbicationContext } from "./"
 
@@ -30,7 +31,7 @@ export const UbicationProvider: React.FC<Props> = ({ children }) => {
     <UbicationContext.Provider value={{
       ubication,
       getUbicationOnPageLoad,
-      getActualTime
+      getActualTime,
     }}>
       {children}
     </UbicationContext.Provider>

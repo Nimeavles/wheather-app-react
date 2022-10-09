@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Aside } from "../components/aside"
 import { Spinner } from "../components/layout/Spinner"
+import { WeekWheather } from "../components/WeekWheather/WeekWheather"
 import { CoordinatesFull } from "../interfaces/types"
 import { getDataFromApi } from "../utils"
-import { HomePage } from "./HomePage"
 
 export const LocationPage = () => {
 
@@ -23,7 +23,12 @@ export const LocationPage = () => {
     return (
         <>
             {
-                coordinates ? <Aside coordinates={coordinates} /> : <Spinner />
+                coordinates ? (
+                    <>                    
+                        <Aside coordinates={coordinates} /> 
+                        <WeekWheather place={ location }/>
+                    </>
+                ) : <Spinner />
             }
         </>
     )
