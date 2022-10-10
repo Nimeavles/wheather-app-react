@@ -1,0 +1,31 @@
+.btn-searcher {
+    animation: avance-animation;
+    animation-duration: 1s;
+    height: 100vh;
+}
+
+/* .btn-searcher-close {
+    animation: avance-animation-close;
+    animation-duration: 1s;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+} */
+
+@keyframes avance-animation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* @keyframes avance-animation-close {
+    100% {
+        transform: translateX(-100%);
+    }
+} */

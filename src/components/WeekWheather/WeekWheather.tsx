@@ -32,30 +32,31 @@ export const WeekWheather: React.FC<Props> = ({ coordinates, place = "" }) => {
     useEffect(() => {
         if (place) {
             fecthWeekWheather(`/forecast?q=${place}&cnt=7`)
-        }else {
-            fecthWeekWheather(`/forecast?lat=${coordinates?.lat}&lon=${coordinates?.lon}&cnt=7`)
+        } else {
+            fecthWeekWheather(`/forecast?lat=${coordinates?.lat}&lon=${coordinates?.lon}&cnt=6`)
         }
     }, [])
 
     return (
-        <section className="min-h-screen bg-[#00003f] grid grid-cols-2 place-items-center">
-            {
-                data && data.list.map((day: List, index: number) => {
+        <div className="bg-[#00001d] lg:flex lg:justify-center min-h-screen lg:min-h-[37%]">
+            <section className="h-screen lg:h-[35%] lg:max-w-[90%] grid grid-cols-2 place-items-center lg:flex lg:flex-wrap lg:gap-4 lg:items-start">
+                {
+                    data && data.list.map((day: List, index: number) => {
 
-                    const randomNumber = Math.floor(Math.random() * 7)
-                    const arrayRandom = Object.values(randomWhetherIcon);
-                    const date = getDays(index);
+                        const randomNumber = Math.floor(Math.random() * 7)
+                        const arrayRandom = Object.values(randomWhetherIcon);
+                        const date = getDays(index);
 
-                    return <WheatherDay
-                        icon={arrayRandom[randomNumber]}
-                        key={index}
-                        max={Math.round(day.main.temp_max)}
-                        min={Math.round(day.main.temp_min)}
-                        date={date}
-                    />
+                        return <WheatherDay
+                            icon={arrayRandom[randomNumber]}
+                            key={index}
+                            max={Math.round(day.main.temp_max)}
+                            min={Math.round(day.main.temp_min)}
+                            date={date}
+                        />
+                    })
                 }
-                )
-            }
-        </section>
+            </section>
+        </div>
     )
 }

@@ -7,7 +7,7 @@ interface Props {
 
 export const WheatherDay: React.FC<Props> = ({ date, icon, max, min}) => {
   return (
-    <article className="bg-slate-900 flex flex-col max-w-[70%] justify-between p-4 rounded-md">
+    <article className="lg:mt-9 bg-slate-900 flex flex-col max-w-[70%] justify-between p-4 rounded-md">
         <h3 className="capitalize text-white font-medium m-auto">
             { date }
         </h3>

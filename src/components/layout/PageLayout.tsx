@@ -7,7 +7,7 @@ interface Props {
 export const PageLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
-        { children}
+        { children }
     </>
   )
 }

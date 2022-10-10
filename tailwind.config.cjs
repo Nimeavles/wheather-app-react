@@ -7,7 +7,11 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'sm-mobile': '415px'
+        'sm-mobile': '415px',
+        'dsk': '1400px'
+      },
+      gridTemplateColumns: {
+        'app-layout': '30% 1fr'
       },
     },
   },

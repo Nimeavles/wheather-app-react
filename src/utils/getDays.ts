@@ -1,12 +1,12 @@
 export const getDays = (index: number) => {
     const days = [
-        'domingo',
         'lunes',
         'martes',
         'miércoles',
         'jueves',
         'viernes',
         'sábado',
+        'domingo',
     ];
 
     const day = new Date().getDay();
