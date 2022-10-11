@@ -26,13 +26,15 @@ export const Searcher: React.FC<Props> = ({ open, setOpen }) => {
     }
 
     const saveOnLocalStorage = (search: string) => {
-        let recentSearchs: any = localStorage.getItem('recentSearchs');
-        if (recentSearchs) {
-            recentSearchs = JSON.parse(recentSearchs);
-            if (recentSearchs.length >= 5) recentSearchs.shift()
-            recentSearchs.filter(search === search)
-            localStorage.setItem('recentSearchs', JSON.stringify([...recentSearchs, search]))
-        } else {
+        let recentSearchsLS: any = localStorage.getItem('recentSearchs');
+        if (recentSearchsLS) {
+            recentSearchsLS = JSON.parse(recentSearchsLS);
+            console.log(recentSearchsLS);
+
+            if (recentSearchsLS.length >= 5) recentSearchsLS.shift()
+            recentSearchsLS = recentSearchsLS.filter((searchFiltered: string) => searchFiltered !== search)
+            localStorage.setItem('recentSearchs', JSON.stringify([...recentSearchsLS, search]))
+        }else {
             localStorage.setItem('recentSearchs', JSON.stringify([search]))
         }
     }
@@ -42,7 +44,7 @@ export const Searcher: React.FC<Props> = ({ open, setOpen }) => {
         searchs ? setRecentSearchs(JSON.parse(searchs)) : '';
     }
 
-    const handleSubmit = (location:string) => {
+    const handleSubmit = (location: string) => {
         navigate(`/location/${location}`);
         navigate(0)
         setOpen(!open)
@@ -66,7 +68,7 @@ export const Searcher: React.FC<Props> = ({ open, setOpen }) => {
                     />
                     <button
                         className="bg-blue-900 text-slate-200 text-lg font-bold focus:outline-0
-                        flex justify-evenly items-center rounded-md p-3 sm-mobile:w-[7.8125rem] 
+                        flex justify-evenly items-center rounded-md p-3 sm-mobile:w-[7.8125rem]
                         sm-mobile:p-2 lg:w-[7rem]"
                         onClick={() => handleSubmit(location)}
                     >
@@ -80,9 +82,9 @@ export const Searcher: React.FC<Props> = ({ open, setOpen }) => {
                         recentSearchs ? (
                             recentSearchs.map((search: string, index: number) => {
                                 return (
-                                    <li key={index} 
+                                    <li key={index}
                                         className="py-2 capitalize text-white font-semibold text-lg border border-transparent hover:cursor-pointer hover:border-slate-300"
-                                        onClick={() => handleSubmit(search)}    
+                                        onClick={() => handleSubmit(search)}
                                     >
                                         <p className='ml-4'>{search}</p>
                                     </li>
